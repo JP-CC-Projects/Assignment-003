@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class UserServices {
 
-    static void logIn() {
+    static void logIn() throws Exception {
         int email = 0;
         int pw = 1;
         int logAttempts = 0;
@@ -26,7 +26,7 @@ public class UserServices {
         }
     }
 
-    static void checkCredentials(String[] m_userInputInfo) {
+    static void checkCredentials(String[] m_userInputInfo) throws Exception{
 
         int email = 0;
         int pw = 1;
@@ -47,6 +47,8 @@ public class UserServices {
             }
             System.out.println("Invalid login, please try again: ");
 
+        } catch (NullPointerException e) {
+            throw new Exception("NullPointerException has occurred.");
         } catch (Exception e) {
             System.out.println(e);
             e.printStackTrace();
@@ -54,9 +56,10 @@ public class UserServices {
             try {
                 bufferedReader.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new Exception("IOException has occurred.");
+            } catch (NullPointerException e) {
+                throw new Exception("NullPointerException has occurred.");
             }
         }
-
     }
 }
